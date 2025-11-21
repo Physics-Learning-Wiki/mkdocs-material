@@ -3,7 +3,7 @@
   %} {% endif %}
 {% set copyright = config.extra.copyright %} {% if page and page.meta and page.meta.copyright is string %} {% set copyright = page.meta.copyright
   %} {% endif %}
-{% set authors = 'OI-wiki' %} {% if page and page.meta and page.meta.author is string %} {% set authors = page.meta.author
+{% set authors = 'Physics-Learning-Wiki' %} {% if page and page.meta and page.meta.author is string %} {% set authors = page.meta.author
   %} {% endif %}
 <hr><blockquote class="page-copyright">
   <span><i class="md-icon">{% include ".icons/material/wrench.svg" %}</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
@@ -12,8 +12,8 @@
   <span><i class="md-icon">{% include ".icons/material/copyright.svg" %}</i>本页面的全部内容在 <strong>{{ copyright }}</strong> 协议之条款下提供，附加条款亦可能应用</span>
 </blockquote>
 <!-- Comments Integration -->
-{% if not page.is_homepage and disqus %}
+<!-- {% if not page.is_homepage and disqus %}
 {% set pageID = page.title | default("404", true) %}
 <div id="__comments" class="giscus" data-no-instant></div>
 {% include "partials/javascripts/comments.html" %}
-{% endif %}
+{% endif %} 暂时不提供评论功能-->
