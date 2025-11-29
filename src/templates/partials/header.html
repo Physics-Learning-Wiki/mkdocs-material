@@ -100,6 +100,19 @@
       {% include "partials/search.html" %}
     {% endif %}
 
+    <!-- Copilot button -->
+    {% if config.repo_url and "github.com" in config.repo_url %}
+      <a
+        href="{{ config.repo_url }}?copilot=chat"
+        title="Ask Copilot"
+        class="md-header__button md-icon"
+        target="_blank"
+        rel="noopener"
+      >
+        {% include ".icons/material/github-copilot.svg" %}
+      </a>
+    {% endif %}
+
     <!-- Repository information -->
     {% if config.repo_url %}
       <div class="md-header__source">
