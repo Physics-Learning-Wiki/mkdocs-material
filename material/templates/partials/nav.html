@@ -18,6 +18,23 @@
   </label>
   {% if config.repo_url %}
     <div class="md-nav__source">
+      {% if "github.com" in config.repo_url %}
+        <a
+          href="{{ config.repo_url }}?copilot=chat"
+          title="Ask Copilot"
+          class="md-source"
+          data-md-component="source"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="md-source__icon md-icon">
+            {% include ".icons/material/github-copilot.svg" %}
+          </div>
+          <div class="md-source__repository">
+            Ask Copilot
+          </div>
+        </a>
+      {% endif %}
       {% include "partials/source.html" %}
     </div>
   {% endif %}
