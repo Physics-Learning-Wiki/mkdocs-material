@@ -128,7 +128,6 @@ assets may also be put in the `overrides` directory:
 │  ├─ consent.html                     # Consent
 │  ├─ content.html                     # Page content
 │  ├─ copyright.html                   # Copyright and theme information
-│  ├─ feedback.html                    # Was this page helpful?
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
 │  ├─ icons.html                       # Custom icons
