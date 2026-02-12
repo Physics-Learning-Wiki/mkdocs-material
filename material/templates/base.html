@@ -250,6 +250,12 @@
       </script>
     {% endblock %}
     {% block scripts %}
+      <script>
+        window.__oiWikiSearchEndpoint = new URL(
+          {{ ("search/search_index.json" | url) | tojson }},
+          document.baseURI
+        ).toString();
+      </script>
       <script src="{{ 'assets/javascripts/bundle.73202423.min.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
