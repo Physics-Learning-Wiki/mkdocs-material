@@ -1,5 +1,29 @@
 {#-
   This file was automatically generated - do not edit
 -#}
+{% set giscus = config.extra.giscus %}
 <div id="__comments_script"></div>
-<script>var comments=document.createElement("script"),commentsTheme="slate"===document.body.dataset.mdColorScheme?"dark":"light";Object.entries({async:!0,src:"https://giscus.app/client.js",crossOrigin:"anonymous","data-repo":"OI-wiki/gitment","data-repo-id":"MDEwOlJlcG9zaXRvcnkxNDQzODg5NjU=","data-category":"{% if config.theme.language == 'zh' %}评论{% else %}Comments{% endif %}","data-category-id":"{% if config.theme.language == 'zh' %}DIC_kwDOCJszZc4CS54y{% else %}DIC_kwDOCJszZc4CS53G{% endif %}","data-mapping":"specific","data-term":"{{ pageID }}","data-strict":"1","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"top","data-theme":commentsTheme,"data-lang":"{% if config.theme.language == 'zh' %}zh-CN{% else %}en-US{% endif %}","data-loading":"lazy"}).forEach((e=>comments.setAttribute(e[0],e[1]))),document.getElementById("__comments_script").replaceWith(comments)</script>
+<script>
+  var comments = document.createElement("script");
+  var commentsTheme = document.body.dataset.mdColorScheme === "slate" ? "dark" : "light";
+  var configuredTheme = {{ (giscus.theme or '') | tojson }};
+  var configuredLang = {{ (giscus.lang or '') | tojson }};
+  Object.entries({
+    async: true,
+    src: {{ (giscus.src or 'https://giscus.app/client.js') | tojson }},
+    crossOrigin: "anonymous",
+    "data-repo": {{ giscus.repo | tojson }},
+    "data-repo-id": {{ giscus.repo_id | tojson }},
+    "data-category": {{ (giscus.category or (config.theme.language == 'zh' and '评论' or 'Comments')) | tojson }},
+    "data-category-id": {{ giscus.category_id | tojson }},
+    "data-mapping": {{ (giscus.mapping or 'pathname') | tojson }},
+    "data-strict": {{ (giscus.strict or '1') | tojson }},
+    "data-reactions-enabled": {{ (giscus.reactions_enabled or '1') | tojson }},
+    "data-emit-metadata": {{ (giscus.emit_metadata or '0') | tojson }},
+    "data-input-position": {{ (giscus.input_position or 'top') | tojson }},
+    "data-theme": configuredTheme || commentsTheme,
+    "data-lang": configuredLang || {{ ((config.theme.language == 'zh') and 'zh-CN' or 'en-US') | tojson }},
+    "data-loading": {{ (giscus.loading or 'lazy') | tojson }}
+  }).forEach(function(entry) { comments.setAttribute(entry[0], entry[1]); });
+  document.getElementById("__comments_script").replaceWith(comments);
+</script>
