@@ -8,6 +8,29 @@
 {% if page and page.meta and page.meta.comments is boolean %}
   {% set comments_enabled = comments_enabled and page.meta.comments %}
 {% endif %}
+{# 内容质量状态标识 #}
+{% set status = page.meta.status if page and page.meta and page.meta.status else "stable" %}
+{% if status == "community" %}
+<aside class="md-status md-status--community">
+  <span class="md-status__icon">&#x1F331;</span>
+  <span class="md-status__text">
+    本文来自<strong>社区投稿</strong>，内容未经 Physics Learning Wiki 团队审核，仅供交流参考。
+    如发现错误，欢迎在下方评论区指出或<a href="/submit/">提交勘误</a>。
+  </span>
+  {% if page.meta.submission_date %}
+  <span class="md-status__meta">投稿日期：{{ page.meta.submission_date }}</span>
+  {% endif %}
+</aside>
+{% elif status == "review" %}
+<aside class="md-status md-status--review">
+  <span class="md-status__icon">&#x270F;&#xFE0F;</span>
+  <span class="md-status__text">
+    本页面状态：<strong>审校中</strong>。
+    {% if page.meta.review_notes %}待完善：{{ page.meta.review_notes }}{% endif %}
+    欢迎参与讨论或提交补充。
+  </span>
+</aside>
+{% endif %}
 <hr><blockquote class="page-copyright">
   <span><i class="md-icon">{% include ".icons/material/wrench.svg" %}</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
   <span><i class="md-icon">{% include ".icons/material/pencil.svg" %}</i>发现错误？想一起完善？ <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
