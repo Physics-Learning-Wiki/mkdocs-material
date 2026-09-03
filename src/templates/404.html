@@ -27,3 +27,42 @@
 {% block htmltitle %}
   <title>404 Not Found - {{ config.site_name }}</title>
 {% endblock %}
+
+{% block content %}
+  <h1>页面未找到</h1>
+  <p>很抱歉，你访问的页面不存在，或者已经被移动到了新的位置．</p>
+
+  <p>
+    <a class="md-button md-button--primary" href="{{ '' | url }}">返回首页</a>
+  </p>
+
+  <h2>推荐从这里继续探索</h2>
+  <div class="grid cards">
+    <ul>
+      <li>
+        <a href="{{ 'intro/roadmap/' | url }}">
+          <strong>学习路线总览</strong>
+          <p>了解物理学习各阶段的先后顺序与主线规划</p>
+        </a>
+      </li>
+      <li>
+        <a href="{{ 'mechanics/' | url }}">
+          <strong>经典力学</strong>
+          <p>从运动学与动力学开始搭建物理学的基石框架</p>
+        </a>
+      </li>
+      <li>
+        <a href="{{ 'quiz/' | url }}">
+          <strong>知识小测</strong>
+          <p>通过交互式题目巩固物理核心概念与自测掌握度</p>
+        </a>
+      </li>
+      <li>
+        <a href="{{ 'submit/' | url }}">
+          <strong>投稿与反馈</strong>
+          <p>提交你的笔记、勘误或内容建议，参与共同建设</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}
